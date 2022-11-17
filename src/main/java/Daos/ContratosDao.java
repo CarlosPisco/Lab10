@@ -66,10 +66,10 @@ public class ContratosDao extends BaseDao{
     }
 
 
+    //muestra la cantidad de contratos por estado de un cliente
+    public ArrayList<CantidadContratos> mostarCantidadContratos (String nroDocumento){
 
-    public CantidadContratos mostarCantidadContratos (String nroDocumento){
-
-        CantidadContratos cc = new CantidadContratos();
+        ArrayList<CantidadContratos> listaCantidadContratosEstado = new ArrayList<>();
         String sql = "select count(*),G6789_status\n" +
                 "from jm_cotr_bis \n" +
                 "where client_nro_id = ?\n" +
@@ -83,6 +83,8 @@ public class ContratosDao extends BaseDao{
             try(ResultSet rs = pstm.executeQuery()){
 
                 if(rs.next()){
+                    CantidadContratos cc = new CantidadContratos();
+
                     cc.setCantidad(rs.getInt(1));
                     switch(rs.getInt(2)){
                         case 0 :
@@ -101,6 +103,7 @@ public class ContratosDao extends BaseDao{
                             break;
 
                     }
+                    listaCantidadContratosEstado.add(cc);
                 }
 
 
@@ -112,7 +115,7 @@ public class ContratosDao extends BaseDao{
         }
 
 
-        return cc;
+        return listaCantidadContratosEstado;
     }
 
 

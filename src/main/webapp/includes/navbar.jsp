@@ -14,7 +14,7 @@
           <a class="nav-link <%=request.getParameter("page").equals("Mis Contratos")? "active": "" %>" href="<%=request.getContextPath()%>/UsuarioServlet?accion=listarContratos" style="font-size: 17px">Mis Contratos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link <%=request.getParameter("page").equals("Estado")? "active": "" %>" href="<%=request.getContextPath()%>/UsuarioServlet?accion=contratosEstado" style="font-size: 17px">Estado</a>
+          <a class="nav-link <%=request.getParameter("page").equals("Estado")? "active": "" %>" href="<%=request.getContextPath()%>/UsuarioServlet?accion=contratosEstado" style="font-size: 17px">Estado Contratos</a>
         </li>
         <li class="nav-item">
           <a class="nav-link <%=request.getParameter("page").equals("Expected Loss")? "active": "" %>" href="<%=request.getContextPath()%>/UsuarioServlet?accion=contratosLoss" style="font-size: 17px">Expected Loss</a>
