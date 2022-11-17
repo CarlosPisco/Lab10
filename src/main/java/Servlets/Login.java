@@ -14,7 +14,7 @@ public class Login extends HttpServlet {
         RequestDispatcher view;
         switch (accion) {
             case "login":
-                view = request.getRequestDispatcher("/index.jsp");
+                view = request.getRequestDispatcher("/Login.jsp");
                 view.forward(request, response);
         }
     }
