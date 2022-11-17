@@ -13,6 +13,7 @@
   <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="corretto-17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
+<<<<<<< HEAD
   <component name="SuppressABINotification">
     <option name="modulesWithSuppressedNotConfigured">
       <set>
@@ -20,4 +21,6 @@
       </set>
     </option>
   </component>
+=======
+>>>>>>> a277423e5b4a9cc6e45a44771342b0770c76c931
 </project>
