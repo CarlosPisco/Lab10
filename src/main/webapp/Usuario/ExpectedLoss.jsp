@@ -45,7 +45,7 @@
         <div class="container-fluid gradient-custom" style="min-height: 60vh; align-content: center;">
             <div class="pt-4 titlecolor">
                 <div class="col-lg-6">
-                    <h1 class='text-dark' class='text-dark' style="color: white !important;font-weight: bold ">Lista de Expected Loss por contrato de <%=credentials.getNumeroDocumento()%></h1>
+                    <h1 class='text-dark' class='text-dark' style="color: white !important;font-weight: bold ">Lista de Expected Loss por contrato </h1>
                 </div>
             </div>
 

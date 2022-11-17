@@ -46,7 +46,7 @@
 
       <div class="pt-4 titlecolor">
         <div class="col-lg-6">
-          <h1 class='text-dark' class='text-dark' style="color: white !important;font-weight: bold ">Lista de cantidad de contratos por estado del usuario <%=credentials.getNumeroDocumento()%></h1>
+          <h1 class='text-dark' class='text-dark' style="color: white !important;font-weight: bold ">Lista de cantidad de contratos por estado</h1>
         </div>
       </div>
 
