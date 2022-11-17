@@ -2,9 +2,11 @@ package Servlets;
 
 import Beans.Clientes;
 
+import Beans.Contratos;
 import Beans.Credentials;
 import DTOs.CantidadContratos;
 import DTOs.ExpectedLoss;
+import Daos.ContratosDao;
 import Daos.ContratosDao;
 import Daos.UsuarioDao;
 import jakarta.servlet.*;
@@ -25,21 +27,26 @@ public class UsuarioServlet extends HttpServlet {
             Credentials credentials = (Credentials) session.getAttribute("credentials");
             if (credentials.getTipoUsuario()==2){ //compara mayu y minu
                 String accion = request.getParameter("accion") == null ? "misDatos" : request.getParameter("accion");
+                UsuarioDao uDao = new UsuarioDao();
+                ContratosDao cDao = new ContratosDao();
                 RequestDispatcher view;
-                ContratosDao contratosDao = new ContratosDao();
+
 
                 switch (accion) {
                     case "misDatos":
+                        Clientes cliente = uDao.buscarCliente(credentials.getNumeroDocumento());
                         view = request.getRequestDispatcher("/Usuario/MisDatos.jsp");
                         view.forward(request, response);
                         break;
                     case "listarContratos":
+                        ArrayList<Contratos> listaContratos = cDao.listarContratos(credentials.getNumeroDocumento());
+                        request.setAttribute("listaContratos", listaContratos);
                         view = request.getRequestDispatcher("/Usuario/MisContratos.jsp");
                         view.forward(request, response);
                         break;
                     case "contratosEstado":
 
-                        ArrayList<CantidadContratos> listaContratosNumeroEstado = contratosDao.mostarCantidadContratos(((Credentials) session.getAttribute("credentials")).getNumeroDocumento());
+                        ArrayList<CantidadContratos> listaContratosNumeroEstado = cDao.mostarCantidadContratos(((Credentials) session.getAttribute("credentials")).getNumeroDocumento());
                         request.setAttribute("cantContratosEstado",listaContratosNumeroEstado);
                         view = request.getRequestDispatcher("/Usuario/Estado.jsp");
                         view.forward(request, response);
@@ -47,7 +54,7 @@ public class UsuarioServlet extends HttpServlet {
                         break;
                     case "contratosLoss":
 
-                        ArrayList<ExpectedLoss> listaExpectedLoss = contratosDao.mostrarMaxExpectedLoss(((Credentials) session.getAttribute("credentials")).getNumeroDocumento());
+                        ArrayList<ExpectedLoss> listaExpectedLoss = cDao.mostrarMaxExpectedLoss(((Credentials) session.getAttribute("credentials")).getNumeroDocumento());
                         request.setAttribute("listaExpectedLoss",listaExpectedLoss);
                         view = request.getRequestDispatcher("/Usuario/ExpectedLoss.jsp");
                         view.forward(request, response);

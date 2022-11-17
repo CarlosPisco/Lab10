@@ -62,31 +62,30 @@ public class UsuarioDao extends BaseDao{
 
     }
 
-    public Clientes buscarCliente (String idCliente){
+    public Clientes buscarCliente (String nroDocumento){
         Clientes cliente = new Clientes();
-        String sql = "SELECT * FROM jm_client_bii";
+        String sql = "SELECT * FROM jm_client_bii where g4093_nro_id = ?";
 
         try(Connection connection = getConnection();
-            Statement stm = connection.createStatement();
-            ResultSet rs = stm.executeQuery(sql)) {
+            PreparedStatement pstm = connection.prepareStatement(sql)) {
 
-            if(rs.next()){
-
-                cliente.setNombreCliente(rs.getString(2));
-                cliente.setEdad(rs.getString(rs.getString(3)));
-                switch(rs.getString(4)){
-                    case "N":
-                        cliente.setTipoCliente("NATURAL");
-                        break;
-                    case "J":
-                        cliente.setTipoCliente("JURIDICA");
-                        break;
+            pstm.setString(1,nroDocumento);
+            try(ResultSet rs = pstm.executeQuery();){
+                if(rs.next()){
+                    cliente.setNombreCliente(rs.getString(2));
+                    cliente.setEdad(rs.getString(3));
+                    switch(rs.getString(4)){
+                        case "N":
+                            cliente.setTipoCliente("NATURAL");
+                            break;
+                        case "J":
+                            cliente.setTipoCliente("JURIDICA");
+                            break;
+                    }
+                    cliente.setTipoDocumento(rs.getString(5));
+                    cliente.setNumeroDocumento(rs.getString(1));
                 }
-                cliente.setTipoDocumento(rs.getString(5));
-                cliente.setNumeroDocumento(rs.getString(1));
-
             }
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

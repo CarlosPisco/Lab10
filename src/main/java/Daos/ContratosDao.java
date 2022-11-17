@@ -31,17 +31,17 @@ public class ContratosDao extends BaseDao{
                     switch(rs.getInt(4)){
                         case 0 :
 
-                            contrato.setEstado("NORMAL");
+                            contrato.setEstado("Normal");
                             break;
 
                         case 1 :
 
-                            contrato.setEstado("CURA");
+                            contrato.setEstado("Cura");
                             break;
 
                         case 2 :
 
-                            contrato.setEstado("MORA");
+                            contrato.setEstado("Mora");
                             break;
 
 
