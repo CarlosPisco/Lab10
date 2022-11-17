@@ -15,7 +15,7 @@ public abstract class BaseDao {
 
         String user = "root";
         String pass = "root";
-        String url = "jdbc:mysql://localhost:3306/lab9?serverTimeZone=America/Lima";
+        String url = "jdbc:mysql://localhost:3306/bi_corp_business?serverTimeZone=America/Lima";
 
         return DriverManager.getConnection(url, user, pass);
     }

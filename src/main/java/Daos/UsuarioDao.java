@@ -106,10 +106,10 @@ public class UsuarioDao extends BaseDao{
             Statement stm = connection.createStatement();
             ResultSet rs = stm.executeQuery(sql)) {
 
-            if(rs.next()){
+            while(rs.next()){
                 Clientes cliente = new Clientes();
                 cliente.setNombreCliente(rs.getString(2));
-                cliente.setEdad(rs.getString(rs.getString(3)));
+                cliente.setEdad(rs.getString(3));
                 switch(rs.getString(4)){
                     case "N":
                         cliente.setTipoCliente("NATURAL");

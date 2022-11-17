@@ -1,10 +1,11 @@
-<%--
+<%@ page import="Beans.Clientes" %><%--
   Created by IntelliJ IDEA.
   User: rodro
   Date: 11/16/22
   Time: 8:53 PM
   To change this template use File | Settings | File Templates.
 --%>
+<jsp:useBean type="java.util.ArrayList<Beans.Clientes>" scope="request" id="clientesDisponibles"/>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
     <head>
@@ -30,19 +31,23 @@
                 <div class="col"></div>
                 <div class="col-md-6">
                     <h1 class='mb-3'>Crear Cliente</h1>
-                    <form method="POST" action="">
+                    <form method="post" action="<%=request.getContextPath()%>/AdminServlet?accion=guardar">
                         <div class="form-group">
                             <label>Numero de Documento</label>
-                            <select name="" class="form-control " required>
-
+                            <select name="clienteDoc" class="form-control " required>
+                                <% for (Clientes cliente : clientesDisponibles) { %>
+                                <option value="<%=cliente.getNumeroDocumento()%>"><%=cliente.getNombreCliente() %></option>
+                                <% } %>
                             </select>
                         </div>
                         <div class="form-group">
                             <label>Contrasenia</label>
-                            <input class="form-control" name="" required>
+                            <input class="form-control" name="clienteCon" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Guardar</button>
-                        <a href="" class="btn btn-danger">Cancelar</a>
+                        <a type="button" class="btn btn-success"
+                           href="<%=request.getContextPath()%>/Login?accion=logout">Cerrar sesión
+                        </a>
                     </form>
                 </div>
                 <div class="col"></div>
