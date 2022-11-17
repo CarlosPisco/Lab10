@@ -1,7 +1,9 @@
 package Servlets;
 
 import Beans.Clientes;
+import Beans.Contratos;
 import Beans.Credentials;
+import Daos.ContratosDao;
 import Daos.UsuarioDao;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -21,13 +23,18 @@ public class UsuarioServlet extends HttpServlet {
             Credentials credentials = (Credentials) session.getAttribute("credentials");
             if (credentials.getTipoUsuario()==2){ //compara mayu y minu
                 String accion = request.getParameter("accion") == null ? "misDatos" : request.getParameter("accion");
+                UsuarioDao uDao = new UsuarioDao();
+                ContratosDao cDao = new ContratosDao();
                 RequestDispatcher view;
                 switch (accion) {
                     case "misDatos":
+                        Clientes cliente = uDao.buscarCliente(credentials.getNumeroDocumento());
                         view = request.getRequestDispatcher("/Usuario/MisDatos.jsp");
                         view.forward(request, response);
                         break;
                     case "listarContratos":
+                        ArrayList<Contratos> listaContratos = cDao.listarContratos(credentials.getNumeroDocumento());
+                        request.setAttribute("listaContratos", listaContratos);
                         view = request.getRequestDispatcher("/Usuario/MisContratos.jsp");
                         view.forward(request, response);
                         break;
