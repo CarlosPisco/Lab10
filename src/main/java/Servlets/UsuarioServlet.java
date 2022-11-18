@@ -30,11 +30,10 @@ public class UsuarioServlet extends HttpServlet {
                 UsuarioDao uDao = new UsuarioDao();
                 ContratosDao cDao = new ContratosDao();
                 RequestDispatcher view;
-
-
                 switch (accion) {
                     case "misDatos":
                         Clientes cliente = uDao.buscarCliente(credentials.getNumeroDocumento());
+                        request.setAttribute("cliente", cliente);
                         view = request.getRequestDispatcher("/Usuario/MisDatos.jsp");
                         view.forward(request, response);
                         break;

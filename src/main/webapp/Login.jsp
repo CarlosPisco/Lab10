@@ -54,7 +54,7 @@
     <body class="gradient-custom text-center">
         <main class="form-signin w-100 m-auto">
             <form method="post" action="<%=request.getContextPath()%>/Login">
-                <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+                <h1 class="h3 mb-3 fw-normal">Ingresar</h1>
 
                 <div class="form-floating">
                     <input type="text" class="form-control" id="floatingInput" name="usuario">
@@ -62,7 +62,7 @@
                 </div>
                 <div class="form-floating">
                     <input type="password" class="form-control" id="floatingPassword" name="contrasenia">
-                    <label for="floatingPassword">Contrasenia</label>
+                    <label for="floatingPassword">Contraseña</label>
                 </div>
                 <%if(session.getAttribute("msg")!=null){%>
                 <div id="validation" class="invalid-feedback" style="display: block; margin-bottom: 10px">

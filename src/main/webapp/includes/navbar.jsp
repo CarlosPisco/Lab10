@@ -19,7 +19,7 @@
           <a class="nav-link <%=request.getParameter("page").equals("Expected Loss")? "active": "" %>" href="<%=request.getContextPath()%>/UsuarioServlet?accion=contratosLoss" style="font-size: 17px">Expected Loss</a>
         </li>
       </ul>
-      <ul class="nav navbar-nav navbar-right me-auto mb-2 mb-md-0"><li>
+      <ul class="nav-item mb-2 mb-md-0"><li>
         <a type="button" class="btn btn-success"
            href="<%=request.getContextPath()%>/Login?accion=logout">Cerrar sesión
         </a>

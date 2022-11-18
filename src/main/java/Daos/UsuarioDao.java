@@ -76,10 +76,10 @@ public class UsuarioDao extends BaseDao{
                     cliente.setEdad(rs.getString(3));
                     switch(rs.getString(4)){
                         case "N":
-                            cliente.setTipoCliente("NATURAL");
+                            cliente.setTipoCliente("Natural");
                             break;
                         case "J":
-                            cliente.setTipoCliente("JURIDICA");
+                            cliente.setTipoCliente("Juridica");
                             break;
                     }
                     cliente.setTipoDocumento(rs.getString(5));

@@ -52,7 +52,6 @@
                 <table class="table table-dark table-transparent table-hover">
                     <thead style="color: white">
                         <tr>
-                            <!--<th>ID Heroe</th>-->
                             <th># de Contrato</th>
                             <th>Divisa</th>
                             <th>Estado</th>
